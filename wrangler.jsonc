@@ -2,12 +2,6 @@
   "name": "baidu-map-server",
   "compatibility_date": "2025-04-30",
   "main": "src/index.js",
-  "routes": [
-    {
-      "pattern": "/*",
-      "script": "baidu-map-server"
-    }
-  ],
   "env": {
     "production": {
       "vars": {

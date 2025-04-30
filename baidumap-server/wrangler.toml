@@ -1,0 +1,6 @@
+name = "baidu-map-server"
+main = "src/index.js"
+compatibility_date = "2025-04-30"
+
+[vars]
+NODE_ENV = "production" 

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>小人移动动画</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        #map {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        #panel {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 200px;
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <div id="panel"></div>
+    <script>
+        // 等待DOM加载完成
+        window.onload = async function() {
+            try {
+                // 从服务器获取配置
+                const response = await fetch('/api/config');
+                const config = await response.json();
+                
+                // 动态加载百度地图API
+                var script = document.createElement('script');
+                script.type = 'text/javascript';
+                script.src = `https://api.map.baidu.com/api?v=3.0&ak=${config.baiduMapAK}&callback=initMap`;
+                document.body.appendChild(script);
+            } catch (error) {
+                console.error('Failed to load configuration:', error);
+            }
+        };
+    </script>
+    <script src="map.js"></script>
+</body>
+</html> 
